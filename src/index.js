@@ -1,5 +1,5 @@
-import oneFunc from "./modules/one";
+import timer from "./modules/timer";
 import twoFunc from "./modules/two";
 
-oneFunc();
+timer('25 june 2022');
 twoFunc();
