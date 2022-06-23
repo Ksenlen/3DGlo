@@ -8,35 +8,34 @@ const menu = () => {
     const scrollBtn = document.querySelector('#scroll-btn[href*="#"]');
 
 
-
     const handleMenu = () => {
         menu.classList.toggle('active-menu');
     };
 
-    scrollBtn.addEventListener('click', (e) => {
-        e.preventDefault();
 
-        const blockID = scrollBtn.getAttribute('href').substr(1);
+    const scrollTo = () => {
+        const blockID = this.getAttribute('href').substr(1);
 
         document.getElementById(blockID).scrollIntoView({
             behavior: 'smooth',
             block: 'start'
         });
+
+    };
+
+    scrollBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollTo();
     });
 
 
-    for (let anchor of anchors) {
+    anchors.forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             e.preventDefault();
-
-            const blockID = anchor.getAttribute('href').substr(1);
-
-            document.getElementById(blockID).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            scrollTo();
         });
-    }
+    });
+
 
     menuBtn.addEventListener('click', handleMenu);
 
