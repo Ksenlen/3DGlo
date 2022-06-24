@@ -4,8 +4,8 @@ const menu = () => {
     const menu = document.querySelector('menu');
     const closeBtn = menu.querySelector('.close-btn');
     const menuItems = menu.querySelectorAll('ul>li>a');
-    const anchors = menu.querySelectorAll('a[href*="#"]');
-    const scrollBtn = document.querySelector('#scroll-btn[href*="#"]');
+    const anchors = menu.querySelectorAll('ul>li>a[href*="#"]');
+    const scrollBtn = document.querySelector('main>a[href*="#"]');
 
 
     const handleMenu = () => {
@@ -13,26 +13,26 @@ const menu = () => {
     };
 
 
-    const scrollTo = () => {
-        const blockID = this.getAttribute('href').substr(1);
+    scrollBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const blockID = scrollBtn.getAttribute('href').substr(1);
 
         document.getElementById(blockID).scrollIntoView({
             behavior: 'smooth',
             block: 'start'
         });
-
-    };
-
-    scrollBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        scrollTo();
     });
 
 
     anchors.forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             e.preventDefault();
-            scrollTo();
+            const blockID = anchor.getAttribute('href').substr(1);
+
+            document.getElementById(blockID).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         });
     });
 
