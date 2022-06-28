@@ -16,9 +16,7 @@ const menu = () => {
             e.target.classList.contains("close-btn")) {
             e.preventDefault();
             handleMenu();
-        } else if (!e.target.closest('.active-menu')) {
-            menu.classList.remove('active-menu');
-        } else if ((e.target.closest('menu') && e.target.closest('a[href*="#"]'))) {
+               } else if ((e.target.closest('menu') && e.target.closest('a[href*="#"]'))) {
             handleMenu();
             e.preventDefault();
             const blockId1 = e.target.closest('a[href*="#"]').getAttribute('href');
@@ -26,15 +24,17 @@ const menu = () => {
                 behavior: 'smooth',
                 block: 'start'
             });
-        } else if (e.target.closest('a[href*="#"]') && mainBlock.classList.contains(e.target)) {
+        } else if (e.target.closest('a[href*="#"]') && mainBlock.contains(e.target)) {
             e.preventDefault();
             const blockId = e.target.closest('a[href*="#"]').getAttribute('href');
             document.querySelector(blockId).scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
-        };
-    });
+        }  else if (menu.classList.contains('active-menu')) {
+            menu.classList.remove('active-menu');
+    };
+});
 };
 
 
