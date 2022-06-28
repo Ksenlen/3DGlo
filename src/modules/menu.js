@@ -16,7 +16,7 @@ const menu = () => {
             e.target.classList.contains("close-btn")) {
             e.preventDefault();
             handleMenu();
-               } else if ((e.target.closest('menu') && e.target.closest('a[href*="#"]'))) {
+        } else if ((e.target.closest('menu') && e.target.closest('a[href*="#"]'))) {
             handleMenu();
             e.preventDefault();
             const blockId1 = e.target.closest('a[href*="#"]').getAttribute('href');
@@ -24,6 +24,7 @@ const menu = () => {
                 behavior: 'smooth',
                 block: 'start'
             });
+        //Здесь нужно проверять принадлежит ли клик блоку mainBlock, а не существует ли класс
         } else if (e.target.closest('a[href*="#"]') && mainBlock.contains(e.target)) {
             e.preventDefault();
             const blockId = e.target.closest('a[href*="#"]').getAttribute('href');
@@ -31,10 +32,11 @@ const menu = () => {
                 behavior: 'smooth',
                 block: 'start'
             });
-        }  else if (menu.classList.contains('active-menu')) {
+        //Это условие нужно перенести под конец, потому что на нём завершаются проверки, так как любой клик будет соответсовать не открытому меню
+        } else if (menu.classList.contains('active-menu')) {
             menu.classList.remove('active-menu');
-    };
-});
+        }
+    });
 };
 
 
