@@ -11,7 +11,6 @@ const menu = () => {
 
 
     document.addEventListener('click', (e) => {
-        console.log(e.target);
         if (e.target.closest('.menu') ||
             e.target.classList.contains("close-btn")) {
             e.preventDefault();

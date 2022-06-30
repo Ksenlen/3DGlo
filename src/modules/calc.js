@@ -1,9 +1,67 @@
-const calc = () => {
+import { animate } from "./helpers";
+
+const calc = (price = 100) => {
     const textCalcBlock = document.querySelectorAll('.calc-block input');
     const formName = document.querySelectorAll('input[name="user_name"]');
     const formPhone = document.querySelectorAll('input[name="user_phone"]');
     const formEmail = document.querySelectorAll('input[name="user_email"]');
     const userMessage = document.querySelector('#form2-message');
+    const calcBlock = document.querySelector('.calc-block');
+    const calcType = document.querySelector('.calc-type');
+    const calcSquare = document.querySelector('.calc-square');
+    const calcCount = document.querySelector('.calc-count');
+    let calcDay = document.querySelector('.calc-day');
+    const total = document.getElementById('total');
+
+
+    const countCalc = () => {
+        const calcTypeValue = +calcType.options[calcType.selectedIndex].value;
+        const calcSquareValue = calcSquare.value;
+
+        let totalValue = 0;
+        let calcCountValue = 1;
+        let calcDayValue = 1;
+
+        if (calcCount.value > 1) {
+            calcCountValue += +calcCount.value / 10;
+        }
+
+        if (calcDay.value && calcDay.value < 5) {
+            calcDayValue = 2;
+        } else if (calcDay.value && calcDay.value < 10) {
+            calcDayValue = 1.5;
+        }
+
+        if (calcTypeValue && calcSquareValue) {
+            totalValue = price * calcTypeValue * calcSquareValue * calcCountValue * calcDayValue;
+
+        } else {
+            totalValue = 0;
+        }
+        animate({
+            duration: 500,
+            timing(timeFraction) {
+                return timeFraction;
+            },
+            draw(progress) {
+                for (let i = 0; i <= totalValue; i++) {
+                    total.textContent = Math.floor(i * progress);
+                }
+            }
+        });
+    };
+
+
+
+    calcBlock.addEventListener('input', (e) => {
+        if (e.target === calcType ||
+            e.target === calcSquare ||
+            e.target === calcCount ||
+            e.target === calcDay) {
+            countCalc();
+        }
+
+    });
 
 
     const blur = (e) => {
@@ -50,3 +108,4 @@ const calc = () => {
 };
 
 export default calc;
+
