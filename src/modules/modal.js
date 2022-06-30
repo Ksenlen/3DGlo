@@ -1,3 +1,5 @@
+import { animate } from "./helpers";
+
 const modal = () => {
     const modal = document.querySelector('.popup');
     const modalForm = modal.querySelector(".popup-content");
@@ -16,7 +18,16 @@ const modal = () => {
                 modalForm.style.opacity = 0;
                 modalForm.style.top = "";
                 modal.style.display = "block";
-                animationModal(true);
+                animate({
+                    duration: 800,
+                    timing(timeFraction) {
+                        return timeFraction;
+                    },
+                    draw(progress) {
+                        modalForm.style.top = 15 * progress + "%";
+                        modalForm.style.opacity = progress;
+                    }
+                });
             } else {
                 modal.style.display = "block";
             }
@@ -29,37 +40,6 @@ const modal = () => {
         }
     });
 
-
-    let animationModal = (showType) => {
-        let start = Date.now();
-        let timer = setInterval(function () {
-            let timePassed = Date.now() - start;
-
-            if (timePassed >= 500) {
-                clearInterval(timer);
-                return;
-            }
-            if (showType) {
-                showAnimation(timePassed);
-                showModal(timePassed);
-            } else {
-                hideModal(timePassed);
-            }
-        }, 20);
-
-        function showAnimation(timePassed) {
-            modalForm.style.top = timePassed / 50 + "%";
-        }
-        function showModal(timePassed) {
-            modalForm.style.opacity = timePassed / 500;
-        }
-        function hideModal(timePassed) {
-            modalForm.style.opacity = 1 - timePassed / 500;
-            if (modalForm.style.opacity < 0.1) {
-                modal.style.display = "none";
-            }
-        }
-    };
 };
 
 export default modal;
