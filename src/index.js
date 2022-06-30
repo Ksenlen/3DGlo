@@ -11,6 +11,6 @@ import slider from "./modules/slider";
 timer('01 july 2022');
 menu();
 modal();
-calc();
+calc(100);
 tabs();
 slider();
