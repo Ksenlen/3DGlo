@@ -5,7 +5,7 @@ const modal = () => {
     const modalForm = modal.querySelector(".popup-content");
     const buttons = document.querySelectorAll('.popup-btn');
     const body = document.querySelector('body');
-    const html = document.querySelector('html');
+
 
     let width = document.documentElement.clientWidth;
 
