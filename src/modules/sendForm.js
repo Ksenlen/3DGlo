@@ -2,6 +2,7 @@ const sendForm = ({ formID, someElem = [] }) => {
     const form = document.getElementById(formID);
     const statusBlock = document.createElement("div");
     const modal = document.querySelector('.popup');
+    const body = document.querySelector('body');
     const errorText = "Ошибка ...";
     const successText = "Спасибо! Наш менеджер с вами свяжется.";
     const errorValidation = "Данные не валидны...";
@@ -83,6 +84,8 @@ const sendForm = ({ formID, someElem = [] }) => {
                     if (formID == "form3") {
                         setTimeout(() => {
                             modal.style.display = 'none';
+                            body.style.overflow = "";
+                            body.style.paddingRight = '';
                         }, 3000);
                     }
                     setTimeout(() => {
