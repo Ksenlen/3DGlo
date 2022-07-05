@@ -86,7 +86,7 @@ const sendForm = ({ formID, someElem = [] }) => {
                             modal.style.display = 'none';
                             body.style.overflow = "";
                             body.style.paddingRight = '';
-                        }, 3000);
+                        }, 2000);
                     }
                     setTimeout(() => {
                         statusBlock.textContent = '';
