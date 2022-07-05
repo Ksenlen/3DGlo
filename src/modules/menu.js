@@ -32,7 +32,7 @@ const menu = () => {
                 block: 'start'
             });
 
-        } else if (!e.target.closest('.active-menu')) {
+        } else if (!e.target.contains('.active-menu')) {
             menu.classList.remove('active-menu');
         }
     });
