@@ -8,11 +8,36 @@ import sendForm from "./modules/sendForm";
 
 
 
-
 timer('01 july 2022');
 menu();
 modal();
 calc(100);
 tabs();
 slider();
-sendForm();
+sendForm({
+    formID: "form1",
+    someElem: [
+        {
+            type: "block",
+            id: "total",
+        },
+    ],
+});
+sendForm({
+    formID: "form2",
+    someElem: [
+        {
+            type: "block",
+            id: "total",
+        },
+    ],
+});
+sendForm({
+    formID: "form3",
+    someElem: [
+        {
+            type: "block",
+            id: "total",
+        },
+    ],
+});
