@@ -4,9 +4,11 @@ const modal = () => {
     const modal = document.querySelector('.popup');
     const modalForm = modal.querySelector(".popup-content");
     const buttons = document.querySelectorAll('.popup-btn');
-
+    const body = document.querySelector('body');
+    const html = document.querySelector('html');
 
     let width = document.documentElement.clientWidth;
+
 
     window.addEventListener("resize", () => {
         width = document.documentElement.clientWidth;
@@ -18,6 +20,8 @@ const modal = () => {
                 modalForm.style.opacity = 0;
                 modalForm.style.top = "";
                 modal.style.display = "block";
+                body.style.overflow = "hidden";
+                body.style.paddingRight = '16px';
                 animate({
                     duration: 800,
                     timing(timeFraction) {
@@ -37,6 +41,8 @@ const modal = () => {
     modal.addEventListener('click', (e) => {
         if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
             modal.style.display = 'none';
+            body.style.overflow = "";
+            body.style.paddingRight = '';
         }
     });
 

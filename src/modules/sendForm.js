@@ -1,8 +1,8 @@
 const sendForm = ({ formID, someElem = [] }) => {
     const form = document.getElementById(formID);
     const statusBlock = document.createElement("div");
+    const modal = document.querySelector('.popup');
     const errorText = "Ошибка ...";
-    const load = "Загрузка ...";
     const successText = "Спасибо! Наш менеджер с вами свяжется.";
     const errorValidation = "Данные не валидны...";
 
@@ -80,6 +80,14 @@ const sendForm = ({ formID, someElem = [] }) => {
             sendData(formBody)
                 .then((data) => {
                     statusBlock.textContent = successText;
+                    if (formID == "form3") {
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                        }, 3000);
+                    }
+                    setTimeout(() => {
+                        statusBlock.textContent = '';
+                    }, 3000);
                     formElements.forEach((input) => {
                         input.value = "";
                         total.textContent = 0;

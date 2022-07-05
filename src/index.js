@@ -8,7 +8,7 @@ import sendForm from "./modules/sendForm";
 
 
 
-timer('01 july 2022');
+timer('10 july 2022');
 menu();
 modal();
 calc(100);
