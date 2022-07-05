@@ -90,7 +90,7 @@ const sendForm = ({ formID, someElem = [] }) => {
                     }
                     setTimeout(() => {
                         statusBlock.textContent = '';
-                    }, 3000);
+                    }, 2000);
                     formElements.forEach((input) => {
                         input.value = "";
                         total.textContent = 0;
